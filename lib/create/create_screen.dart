@@ -6,7 +6,8 @@ class CreateScreen extends StatefulWidget {
   final ValueChanged taskChanged;
   final VoidCallback onClose;
 
-  const CreateScreen({Key key, this.category, this.taskChanged, this.onClose}) : super(key: key);
+  const CreateScreen({Key key, this.category, this.taskChanged, this.onClose})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _CreateScreenState();
@@ -53,10 +54,10 @@ class _CreateScreenState extends State<CreateScreen> {
                 TextField(
                   onChanged: widget.taskChanged,
                   controller: _taskController,
-                  style: Theme.of(context).textTheme.title,
+                  style: Theme.of(context).textTheme.headline1,
                   decoration: InputDecoration(
                       labelText: "What task are you planning to perform?",
-                      labelStyle: Theme.of(context).textTheme.subhead),
+                      labelStyle: Theme.of(context).textTheme.headline6),
                 ),
               ],
             ),

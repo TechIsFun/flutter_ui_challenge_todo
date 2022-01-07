@@ -10,26 +10,26 @@ class CategoryProgress extends StatelessWidget {
     return ProgressAnimation(
       value: _calclulateProgress(),
       builder: (context, progress) => Row(
-            children: <Widget>[
-              Expanded(
-                child: SizedBox(
-                  height: 3.0,
-                  child: LinearProgressIndicator(
-                    value: progress,
-                    backgroundColor: Colors.black12,
-                    valueColor: AlwaysStoppedAnimation(category.color),
-                  ),
-                ),
+        children: <Widget>[
+          Expanded(
+            child: SizedBox(
+              height: 3.0,
+              child: LinearProgressIndicator(
+                value: progress,
+                backgroundColor: Colors.black12,
+                valueColor: AlwaysStoppedAnimation(category.color),
               ),
-              SizedBox(
-                width: 15.0,
-              ),
-              Text(
-                "${(progress * 100).toInt()}%",
-                style: Theme.of(context).textTheme.subhead,
-              ),
-            ],
+            ),
           ),
+          SizedBox(
+            width: 15.0,
+          ),
+          Text(
+            "${(progress * 100).toInt()}%",
+            style: Theme.of(context).textTheme.headline6,
+          ),
+        ],
+      ),
     );
   }
 

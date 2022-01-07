@@ -21,10 +21,10 @@ class CategoryInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text("${category.tasks.length} Tasks",
-                    style: Theme.of(context).textTheme.subhead),
+                    style: Theme.of(context).textTheme.headline6),
                 SizedBox(height: 4.0),
                 Text(category.title,
-                    style: Theme.of(context).textTheme.display1),
+                    style: Theme.of(context).textTheme.headline1),
                 SizedBox(height: 12.0),
                 CategoryProgress(category: category),
               ],

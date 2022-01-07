@@ -78,7 +78,7 @@ class _TaskListState extends State<TaskList> with TickerProviderStateMixin {
                 ),
                 Text(
                   "Today",
-                  style: Theme.of(context).textTheme.subhead,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
                 SizedBox(
                   height: 12.0,
@@ -92,8 +92,8 @@ class _TaskListState extends State<TaskList> with TickerProviderStateMixin {
                       builder: (context, tasks) {
                         return ListView.separated(
                           separatorBuilder: (context, _) => SizedBox(
-                                height: 10.0,
-                              ),
+                            height: 10.0,
+                          ),
                           itemBuilder: (BuildContext context, int index) {
                             final task = tasks[index];
                             return Opacity(

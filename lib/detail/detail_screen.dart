@@ -39,25 +39,23 @@ class _DetailScreenState extends State<DetailScreen>
 
   @override
   void initState() {
-    _transitionAnimation =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300))
-          ..addListener(() => setState(() {
-                buttonSize = buttonSizeTween.evaluate(_transitionAnimation);
-                buttonPosition =
-                    buttonPositionTween.evaluate(_transitionAnimation);
-                buttonRadius = buttonRadiusTween.evaluate(_transitionAnimation);
+    _transitionAnimation = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 300))
+      ..addListener(() => setState(() {
+            buttonSize = buttonSizeTween.evaluate(_transitionAnimation);
+            buttonPosition = buttonPositionTween.evaluate(_transitionAnimation);
+            buttonRadius = buttonRadiusTween.evaluate(_transitionAnimation);
 
-                listOpacity = listOpacityTween.evaluate(_transitionAnimation);
-                createOpacity =
-                    createOpacityTween.evaluate(_transitionAnimation);
-              }))
-          ..addStatusListener((status) {
-            if (status == AnimationStatus.completed) {
-              setState(() {
-                creatingTask = !creatingTask;
-              });
-            }
+            listOpacity = listOpacityTween.evaluate(_transitionAnimation);
+            createOpacity = createOpacityTween.evaluate(_transitionAnimation);
+          }))
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          setState(() {
+            creatingTask = !creatingTask;
           });
+        }
+      });
 
     super.initState();
   }
@@ -65,7 +63,7 @@ class _DetailScreenState extends State<DetailScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Stack(
           children: <Widget>[
@@ -85,7 +83,6 @@ class _DetailScreenState extends State<DetailScreen>
 
     listOpacityTween = Tween(begin: 1.0, end: 0.0);
     createOpacityTween = Tween(begin: 0.0, end: 1.0);
-
 
     if (creatingTask) {
       buttonSizeTween = ReverseTween(buttonSizeTween);
@@ -140,20 +137,20 @@ class _DetailScreenState extends State<DetailScreen>
           converter: (store) =>
               () => store.dispatch(AddTask(widget.category, newTaskTitle)),
           builder: (context, callback) => IconButton(
-                icon: Icon(
-                  Icons.add,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  if (creatingTask &&
-                      newTaskTitle != null &&
-                      newTaskTitle.isNotEmpty) {
-                    callback();
-                    newTaskTitle = null;
-                  }
-                  _startTransitionAnimation();
-                },
-              ),
+            icon: Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              if (creatingTask &&
+                  newTaskTitle != null &&
+                  newTaskTitle.isNotEmpty) {
+                callback();
+                newTaskTitle = null;
+              }
+              _startTransitionAnimation();
+            },
+          ),
         ),
       ),
     );

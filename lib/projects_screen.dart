@@ -60,12 +60,12 @@ class _ProjectScreenState extends State<ProjectsScreen> {
                         height: 24.0,
                       ),
                       Text("Hello, Jane.",
-                          style: Theme.of(context).textTheme.body1),
+                          style: Theme.of(context).textTheme.bodyText1),
                       SizedBox(
                         height: 16.0,
                       ),
                       Text("Looks like feel good.",
-                          style: Theme.of(context).textTheme.body2),
+                          style: Theme.of(context).textTheme.bodyText2),
                       StoreConnector<CategoryState, int>(
                         converter: (store) => store.state.categories.fold(
                             0,
@@ -76,7 +76,7 @@ class _ProjectScreenState extends State<ProjectsScreen> {
                                     .length),
                         builder: (context, count) => Text(
                             "You have $count tasks to do today.",
-                            style: Theme.of(context).textTheme.body2),
+                            style: Theme.of(context).textTheme.bodyText2),
                       ),
                     ],
                   ),
@@ -108,7 +108,8 @@ class _ProjectScreenState extends State<ProjectsScreen> {
                               });
                             },
                             alignment: Alignment.topCenter,
-                            separatorProvider: (position, _) => Size.fromWidth(12.0),
+                            separatorProvider: (position, _) =>
+                                Size.fromWidth(12.0),
                             sizeProvider: (position, _) => itemSize,
                             padding: EdgeInsets.only(
                                 left: horizontalPadding,
@@ -120,27 +121,26 @@ class _ProjectScreenState extends State<ProjectsScreen> {
                                 key: cardKey,
                                 category: categories[position],
                                 onPressed: () => Navigator.of(context).push(
-                                      PageRouteBuilder(pageBuilder:
-                                          (BuildContext context,
-                                              Animation animation,
-                                              Animation secondaryAnimation) {
-                                        return DetailScreen(
-                                            category: categories[position]);
-                                      }, transitionsBuilder: (BuildContext
-                                              context,
-                                          Animation<double> animation,
-                                          Animation<double> secondaryAnimation,
-                                          Widget child) {
-                                        RevealData revealData =
-                                            _captureRevealData(cardKey);
+                                  PageRouteBuilder(pageBuilder:
+                                      (BuildContext context,
+                                          Animation animation,
+                                          Animation secondaryAnimation) {
+                                    return DetailScreen(
+                                        category: categories[position]);
+                                  }, transitionsBuilder: (BuildContext context,
+                                      Animation<double> animation,
+                                      Animation<double> secondaryAnimation,
+                                      Widget child) {
+                                    RevealData revealData =
+                                        _captureRevealData(cardKey);
 
-                                        return ScreenTransition(
-                                          animation: animation,
-                                          screen: child,
-                                          revealData: revealData,
-                                        );
-                                      }),
-                                    ),
+                                    return ScreenTransition(
+                                      animation: animation,
+                                      screen: child,
+                                      revealData: revealData,
+                                    );
+                                  }),
+                                ),
                               );
                             },
                             snipDuration: Duration(milliseconds: 300),

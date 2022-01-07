@@ -13,12 +13,12 @@ void main() {
         ]),
         Category(1, Icons.content_paste, Colors.orange, "Work", []),
       ]));
-  runApp(FlutterReduxApp(store: store));
+  runApp(MyApp(store: store));
 }
 
-class FlutterReduxApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   final Store<CategoryState> store;
-  const FlutterReduxApp({Key key, this.store}) : super(key: key);
+  const MyApp({Key key, this.store}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +28,14 @@ class FlutterReduxApp extends StatelessWidget {
         theme: ThemeData(
             primarySwatch: Colors.blue,
             textTheme: TextTheme(
-              body1: TextStyle(color: Colors.white, fontSize: 28.0),
-              body2: TextStyle(color: Colors.white54, fontSize: 14.0),
-              display1: TextStyle(color: Colors.black87, fontSize: 36.0),
+              bodyText1: TextStyle(color: Colors.white, fontSize: 28.0),
+              bodyText2: TextStyle(color: Colors.white54, fontSize: 14.0),
+              headline1: TextStyle(color: Colors.black87, fontSize: 36.0),
               caption: TextStyle(
                   color: Colors.white,
                   fontSize: 12.0,
                   fontWeight: FontWeight.bold),
-              subhead: TextStyle(color: Colors.black54, fontSize: 12.0),
+              headline6: TextStyle(color: Colors.black54, fontSize: 12.0),
             )),
         home: MyHomePage(title: 'Flutter Demo Home Page'),
       ),
